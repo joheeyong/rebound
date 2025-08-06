@@ -3,16 +3,12 @@ package com.rebound
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.rebound.ui.theme.ReboundTheme
+import com.rebound.util.DummyData
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +21,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ReboundApp() {
+    val items = DummyData.itemList
+
     MaterialTheme {
-        Text("Hello Rebound!")
+        Column {
+            for (item in items) {
+                Text(text = "${item.title}: ${item.description}")
+            }
+        }
     }
 }
 
